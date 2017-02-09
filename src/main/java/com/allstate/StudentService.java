@@ -16,7 +16,7 @@ public class StudentService {
     }
 
     public Student create(String email){
-        Student student = new Student((email));
+        Student student = new Student(email);
         return this.studentRepository.save(student);
     }
 

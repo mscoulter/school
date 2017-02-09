@@ -10,7 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @Suite.SuiteClasses({
 		StudentServiceTest.class,
-		KlassServiceTest.class
+		KlassServiceTest.class,
+		TeacherServiceTest.class
 })
 public class SchoolApplicationTests {
 

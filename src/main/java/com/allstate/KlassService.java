@@ -17,12 +17,17 @@ public class KlassService {
     public void setKlassRepository(IKlassRepository klassRepository){
         this.klassRepository = klassRepository;
     }
+
     public Klass findById(Integer id){
         return this.klassRepository.findOne(id);
     }
 
     public Klass findByName(String name){
         return this.klassRepository.findByName(name);
+    }
+
+    public Klass create(Klass klass){
+        return this.klassRepository.save(klass);
     }
 }
 
