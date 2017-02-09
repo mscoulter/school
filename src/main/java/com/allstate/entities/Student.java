@@ -1,5 +1,6 @@
 package com.allstate.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="students")
@@ -18,6 +20,18 @@ public class Student {
     private String email;
     private Date created;
     private Date modified;
+
+//    @OneToMany(mappedBy = "student")
+//    @JsonIgnore
+//    private List<Grade> grades;
+
+    @ManyToMany
+    @JoinTable(name = "grades",
+            joinColumns = @JoinColumn(name = "klass_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
+    @JsonIgnore
+    private List<Klass> klasses;
+
 
     public Student(){
 

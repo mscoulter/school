@@ -1,6 +1,7 @@
 package com.allstate.entities;
 
 import com.allstate.enums.Department;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,6 +12,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="klasses")
@@ -53,6 +55,14 @@ public class Klass {
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
+
+//    @OneToMany(mappedBy = "klass")
+//    @JsonIgnore
+//    private List<Grade> grades;
+
+    @ManyToMany(mappedBy = "klasses")
+    @JsonIgnore
+    private List<Student> students;
 
     public Klass(){}
 
